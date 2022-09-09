@@ -1,2 +1,2 @@
 # test.github.io
-静态网页部署测试
+hello,你好哇
