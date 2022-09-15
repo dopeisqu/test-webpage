@@ -1,2 +1,2 @@
 # test.github.io
-静态网站测试
+vue-cli项目静态网站测试
