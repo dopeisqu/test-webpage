@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -44,3 +44,287 @@
 </body>
 </html>
 
+ -->
+
+ <!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>奥特曼生日祝福</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial Rounded MT Bold', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #2c3e50, #1a2a6c);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #fff;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 600px;
+            background: rgba(0, 20, 80, 0.8);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h1 {
+            color: #FFDE00;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+        }
+        
+        .message-box {
+            margin: 25px 0;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(0, 60, 120, 0.5);
+            border: 2px solid #00b4ff;
+        }
+        
+        #birthday-message {
+            font-size: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        #ultraman-name {
+            color: #FFDE00;
+            font-weight: bold;
+            font-size: 1.8rem;
+            margin: 15px 0;
+            text-shadow: 0 0 8px rgba(0, 180, 255, 0.8);
+        }
+        
+        .ultraman-container {
+            position: relative;
+            width: 300px;
+            height: 250px;
+            margin: 20px auto;
+        }
+        
+        #ultraman-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+        
+        #ultraman-img:hover {
+            transform: scale(1.05);
+        }
+        
+        .action-btn {
+            background: linear-gradient(to bottom, #ff0000, #b20000);
+            color: white;
+            font-size: 1.2rem;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+        }
+        
+        .actions-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #FFDE00;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkleAnim 1.5s linear forwards;
+        }
+        
+        @keyframes sparkleAnim {
+            0% { opacity: 1; transform: translate(0, 0) scale(1); }
+            100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0); }
+        }
+        
+        footer {
+            margin-top: 25px;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        #change-ultraman-btn {
+            background: linear-gradient(to bottom, #00b4ff, #0066cc);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>唐振洋小盆友，生日快乐！</h2>
+        
+        <div class="message-box">
+            <p id="birthday-message">点击下方按钮生成专属生日祝福</p>
+            <p id="ultraman-name"></p>
+        </div>
+        
+        <div class="ultraman-container">
+            <img id="ultraman-img" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.alicdn.com%2Fimgextra%2Fi4%2F1929842693%2FO1CN01GKSMUC1VlRbGxPNDV_%21%211929842693.jpg&refer=http%3A%2F%2Fimg.alicdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1754838499&t=14f5d48cb08e5e274313b7ccd2ea3826" alt="奥特曼">
+        </div>
+        
+        <div class="actions-container">
+            <button class="action-btn" id="change-msg-btn">生成祝福</button>
+            <button class="action-btn" id="change-ultraman-btn">切换奥特曼</button>
+            <button class="action-btn" id="special-power-btn">光之力量</button>
+        </div>
+        
+        <footer>
+            <p>奥特曼宇宙联盟祝你生日快乐！</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ultramanImg = document.getElementById('ultraman-img');
+            const birthdayMessage = document.getElementById('birthday-message');
+            const ultramanName = document.getElementById('ultraman-name');
+            
+            // 奥特曼图片库
+            const ultramanImages = [
+                'https://picx.zhimg.com/v2-efa27c0fbb15fc07f9bd707b3dd935e1_r.jpg',
+                'https://picx.zhimg.com/v2-149c1d4633f2593030300dc9ce20a6eb_1440w.jpg',
+                'https://pica.zhimg.com/v2-acb552f9dc6827721d1e0a2586ae362c_r.jpg',
+                'https://pica.zhimg.com/v2-2f7669948ca2c852e32f91d85c149366_1440w.jpg',
+                'https://pic3.zhimg.com/v2-adbef9ec2190abcb65c2d41e34a26a50_1440w.jpg',
+                'https://pic1.zhimg.com/v2-b3e67744831ce23fe031da8c9773b802_1440w.jpg'
+            ];
+            
+            // 奥特曼名称库
+            const ultramanNames = [
+                '赛罗奥特曼',
+                '迪迦奥特曼',
+                '泽塔奥特曼',
+                '泰罗奥特曼',
+                '欧布奥特曼'
+            ];
+            
+            // 祝福语库
+            const birthdayMessages = [
+                '愿你和奥特曼一样充满勇气，战胜一切困难！',
+                '新的一岁，愿你像奥特曼一样充满光之力量！',
+                '祝你拥有奥特曼般的正义感，永远保护所爱之人！',
+                '愿你的童年充满奥特曼般的奇迹和冒险！',
+                '生日快乐！愿奥特曼的力量守护你健康成长！'
+            ];
+            
+            // 切换祝福按钮
+            document.getElementById('change-msg-btn').addEventListener('click', function() {
+                // 随机生成祝福语
+                const randomMessage = birthdayMessages[Math.floor(Math.random() * birthdayMessages.length)];
+                birthdayMessage.textContent = randomMessage;
+                
+                // 随机生成奥特曼名称
+                const randomName = ultramanNames[Math.floor(Math.random() * ultramanNames.length)];
+                ultramanName.textContent = randomName;
+                
+                // 添加粒子效果
+                createSparkles();
+            });
+            
+            // 切换奥特曼图片按钮
+            document.getElementById('change-ultraman-btn').addEventListener('click', function() {
+                // 随机选择一张奥特曼图片
+                const randomImage = ultramanImages[Math.floor(Math.random() * ultramanImages.length)];
+                ultramanImg.src = randomImage;
+                
+                // 添加粒子效果
+                createSparkles();
+            });
+            
+            // 光之力量按钮
+            document.getElementById('special-power-btn').addEventListener('click', function() {
+                // 放大图片
+                ultramanImg.style.transform = 'scale(1.2)';
+                
+                // 改变背景颜色
+                document.body.style.background = 'linear-gradient(135deg, #ff512f, #f09819)';
+                
+                // 显示特殊消息
+                birthdayMessage.textContent = '光之力量已激活！';
+                ultramanName.textContent = '变身成功！';
+                
+                // 创建大量粒子
+                for(let i = 0; i < 30; i++) {
+                    createSparkles();
+                }
+                
+                // 恢复原始状态
+                setTimeout(() => {
+                    ultramanImg.style.transform = 'scale(1)';
+                    document.body.style.background = 'linear-gradient(135deg, #2c3e50, #1a2a6c)';
+                }, 2000);
+            });
+            
+            // 创建粒子效果
+            function createSparkles() {
+                const container = document.querySelector('.container');
+                
+                for (let i = 0; i < 10; i++) {
+                    const sparkle = document.createElement('div');
+                    sparkle.classList.add('sparkle');
+                    
+                    // 随机位置
+                    const posX = Math.random() * 100;
+                    sparkle.style.left = `${posX}%`;
+                    sparkle.style.top = '50%';
+                    
+                    // 随机动画参数
+                    const tx = (Math.random() - 0.5) * 200;
+                    const ty = (Math.random() - 1) * 150;
+                    sparkle.style.setProperty('--tx', `${tx}px`);
+                    sparkle.style.setProperty('--ty', `${ty}px`);
+                    
+                    // 随机大小和颜色
+                    const size = Math.random() * 10 + 5;
+                    sparkle.style.width = `${size}px`;
+                    sparkle.style.height = `${size}px`;
+                    
+                    // 随机颜色
+                    const colors = ['#FFDE00', '#00b4ff', '#ff0000', '#ffffff'];
+                    sparkle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    
+                    // 随机动画延迟
+                    sparkle.style.animationDelay = `${Math.random() * 0.5}s`;
+                    
+                    container.appendChild(sparkle);
+                    
+                    // 动画结束后移除元素
+                    sparkle.addEventListener('animationend', () => {
+                        sparkle.remove();
+                    });
+                }
+            }
+            
+            // 初始化第一次祝福
+            document.getElementById('change-msg-btn').click();
+        });
+    </script>
+</body>
+</html>
